@@ -9,14 +9,40 @@ const PORT = process.env.PORT || 3000;
 
 
 app.get('/', async (req, res) => {
-	const products = await getProducts();
-	const markup = products
-		.map(
-			(p) =>
-				`<a style ="display: block; margin: 10px; color: black" href="products/${p.id}">${p.title} - €${p.price}</a>`
-		)
-		.join(' ');
-	res.send(markup);
+  const products = await getProducts();
+  const markup = products
+    .map(
+      (p) => `
+      <div style="display: flex; justify-content: center; margin: 20px;">
+        <div style="border: 1px solid #ddd; border-radius: 10px; padding: 20px; width: 250px; height: 500px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease-in-out;">
+          <div style="width: 100%; height: 250px; background-image: url('${p.image}'); background-size: cover; background-position: center; border-radius: 5px;"></div>
+          <div style="text-align: center; padding-top: 10px; height: 250px; display: flex; flex-direction: column; justify-content: space-between;">
+            <a href="products/${p.id}" style="font-size: 18px; font-weight: bold; color: #333; text-decoration: none; margin-bottom: 10px;">${p.title}</a>
+            <p style="font-size: 36px; color: #555; margin: 5px 0;">${p.price} kr</p>
+            <button style="padding: 10px 15px; background-color: #008CBA; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+              <a href="products/${p.id}" style="font-size: 18px; font-weight: bold; color: white; text-decoration: none;">Buy</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    `
+    )
+    .join('');
+  
+  res.send(`
+    <html>
+      <head>
+        <title>Product Page</title>
+      </head>
+      <body>
+        <h1 style="text-align: center;">Welcome to my Klarna checkout Project</h1>
+        <h1 style="text-align: center;">Our Products</h1>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+          ${markup}
+        </div>
+      </body>
+    </html>
+  `);
 });
 
 app.get('/products/:id', async (req, res) => {

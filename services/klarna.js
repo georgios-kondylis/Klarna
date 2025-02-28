@@ -3,6 +3,9 @@ import { config } from 'dotenv'; //this is to get acces to .env file and its var
 config();
 
 const ngrokURL = 'ff97-81-228-212-20.ngrok-free.app'; // https://d5db-81-228-212-20.ngrok-free.app
+const renderURL = 'klarna.onrender.com';			//'https://klarna.onrender.com';
+
+
 
 export function getKlarnaAuth() {
 	const username = process.env.PUBLIC_KEY;
@@ -48,10 +51,10 @@ export async function createOrder(product) {
 			}
 		],
 		merchant_urls: {
-			terms: `https://${ngrokURL}/terms.html`,
-			checkout: `https://${ngrokURL}/checkout.html?order_id={checkout.order.id}`,
-			confirmation: `https://${ngrokURL}/confirmation?order_id={checkout.order.id}`,
-			push: `https://${ngrokURL}/api/push?order_id={checkout.order.id}`
+			terms: `https://${renderURL}/terms.html`,
+			checkout: `https://${renderURL}/checkout.html?order_id={checkout.order.id}`,
+			confirmation: `https://${renderURL}/confirmation?order_id={checkout.order.id}`,
+			push: `https://${renderURL}/api/push?order_id={checkout.order.id}`
 		}
 	};
 

@@ -5,10 +5,8 @@ const app = express();
 
 import { config } from 'dotenv'; //this is to get acces to .env file and its variables
 config();
+const PORT = process.env.PORT || 3000;
 
-// process.env. we use it before the variable to acces it
-// ex. console.log(process.env.PORT); outcome is 3000
-// ex. console.log(process.env.BASE_URL); outcome is https://api.playground.klarna.com
 
 app.get('/', async (req, res) => {
 	const products = await getProducts();
@@ -43,4 +41,4 @@ app.get('/confirmation', async (req, res) => {
 
 console.log('Hello world kaula your url is localhost:3000');
 
-app.listen(process.env.PORT);
+app.listen(PORT);

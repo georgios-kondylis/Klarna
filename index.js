@@ -42,8 +42,5 @@ app.get('/confirmation', async (req, res) => {
 });
 
 console.log('Hello world kaula your url is localhost:3000');
-// console.log('PUBLIC_KEY:', process.env.PUBLIC_KEY);
-// console.log('SECRET_KEY:', process.env.SECRET_KEY);
-// console.log('BASE_URL:', process.env.BASE_URL);
 
 app.listen(process.env.PORT);

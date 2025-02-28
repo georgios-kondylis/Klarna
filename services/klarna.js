@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import { config } from 'dotenv'; //this is to get acces to .env file and its variables
 config();
 
-const ngrokURL = 'b0a0-81-228-212-20.ngrok-free.app'; // https://d5db-81-228-212-20.ngrok-free.app
+const ngrokURL = 'ff97-81-228-212-20.ngrok-free.app'; // https://d5db-81-228-212-20.ngrok-free.app
 
 export function getKlarnaAuth() {
 	const username = process.env.PUBLIC_KEY;

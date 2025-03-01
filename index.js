@@ -32,11 +32,17 @@ app.get('/', async (req, res) => {
   res.send(`
     <html>
       <head>
-        <title>Product Page</title>
+        <title>Georgios eShop</title>
       </head>
-      <body>
-        <h1 style="text-align: center;">Welcome to my Klarna checkout Project</h1>
-        <h1 style="text-align: center;">Our Products</h1>
+      <body style="margin: 0; font-family: Arial, sans-serif;">
+        <!-- Navbar -->
+        <div style="background-color: #008CBA; padding: 20px; text-align: center;">
+          <h1 style="color: white; margin: 0;">Georgios eShop</h1>
+        </div>
+
+        <h1 style="text-align: center; margin-top: 20px;">Welcome to my Klarna checkout Project</h1>
+        <h2 style="text-align: center;">Our Products</h2>
+        
         <div style="display: flex; flex-wrap: wrap; justify-content: center;">
           ${markup}
         </div>
@@ -44,6 +50,7 @@ app.get('/', async (req, res) => {
     </html>
   `);
 });
+
 
 app.get('/products/:id', async (req, res) => {
 	try {

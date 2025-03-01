@@ -14,16 +14,18 @@ app.get('/', async (req, res) => {
     .map(
       (p) => `
       <div style="display: flex; justify-content: center; margin: 20px;">
-        <div style="border: 1px solid #ddd; border-radius: 10px; padding: 20px; width: 250px; height: 500px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease-in-out;">
-          <div style="width: 100%; height: 250px; background-image: url('${p.image}'); background-size: cover; background-position: center; border-radius: 5px;"></div>
-          <div style="text-align: center; padding-top: 10px; height: 250px; display: flex; flex-direction: column; justify-content: space-between;">
-            <a href="products/${p.id}" style="font-size: 18px; font-weight: bold; color: #333; text-decoration: none; margin-bottom: 10px;">${p.title}</a>
-            <p style="font-size: 36px; color: #555; margin: 5px 0;">${p.price} kr</p>
-            <button style="padding: 10px 15px; background-color: #008CBA; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
-              <a href="products/${p.id}" style="font-size: 18px; font-weight: bold; color: white; text-decoration: none;">Buy</a>
-            </button>
+        <a href="products/${p.id}" style="text-decoration: none; color: inherit;">
+          <div style="border: 1px solid #ddd; border-radius: 10px; padding: 20px; width: 250px; height: 500px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease-in-out; cursor: pointer;">
+            <div style="width: 100%; height: 250px; background-image: url('${p.image}'); background-size: cover; background-position: center; border-radius: 5px;"></div>
+            <div style="text-align: center; padding-top: 10px; height: 250px; display: flex; flex-direction: column; justify-content: space-between;">
+              <h3 style="font-size: 18px; font-weight: bold; color: #333; margin-bottom: 10px;">${p.title}</h3>
+              <p style="font-size: 36px; color: #555; margin: 5px 0;">${p.price} kr</p>
+              <button style="padding: 10px 15px; background-color: #008CBA; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+                Buy
+              </button>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     `
     )
@@ -50,6 +52,7 @@ app.get('/', async (req, res) => {
     </html>
   `);
 });
+
 
 
 app.get('/products/:id', async (req, res) => {
